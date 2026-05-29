@@ -6,7 +6,7 @@ import Projects from '@/components/Projects';
 import GithubSection from '@/components/GithubSection';
 import Footer from '@/components/Footer';
 
-export default function Home() {
+export default function App() {
   return (
     <>
       <Navbar />

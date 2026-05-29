@@ -1,10 +1,10 @@
 # Armando Ibarra — Portfolio
 
-Personal portfolio website built with Next.js 15 and SCSS. Features a dark minimalist design, live GitHub pinned repositories, and downloadable CV in English and Spanish.
+Personal portfolio website built with React and Vite. Features a dark minimalist design, live GitHub pinned repositories, and downloadable CV in English and Spanish.
 
 ## Tech Stack
 
-- **Framework:** Next.js 15 (App Router)
+- **Framework:** React 18 + Vite 5
 - **Language:** TypeScript
 - **Styling:** SCSS Modules
 - **Fonts:** Inter + JetBrains Mono (Google Fonts) + Material Symbols
@@ -12,39 +12,46 @@ Personal portfolio website built with Next.js 15 and SCSS. Features a dark minim
 ## Project Structure
 
 ```
-app/
 ├── public/
 │   └── assets/
-│       ├── cv-en.pdf          # English CV
-│       ├── cv-es.pdf          # Spanish CV
+│       ├── cv-en.pdf
+│       ├── cv-es.pdf
 │       └── profile-image.jpeg
-└── src/
-    ├── app/
-    │   ├── layout.tsx
-    │   ├── page.tsx
-    │   └── globals.scss
-    ├── components/
-    │   ├── Navbar.tsx
-    │   ├── Hero.tsx
-    │   ├── TechStack.tsx
-    │   ├── Experience.tsx
-    │   ├── Projects.tsx
-    │   ├── GithubSection.tsx
-    │   └── Footer.tsx
-    └── styles/
-        ├── _variables.scss
-        └── *.module.scss
+├── src/
+│   ├── main.tsx          # Entry point
+│   ├── App.tsx           # Root component
+│   ├── globals.scss      # Global styles & resets
+│   ├── components/
+│   │   ├── Navbar.tsx
+│   │   ├── Hero.tsx
+│   │   ├── TechStack.tsx
+│   │   ├── Experience.tsx
+│   │   ├── Projects.tsx
+│   │   ├── GithubSection.tsx
+│   │   └── Footer.tsx
+│   └── styles/
+│       ├── _variables.scss
+│       └── *.module.scss
+├── index.html
+└── vite.config.ts
 ```
 
 ## Getting Started
 
 ```bash
-cd app
 npm install
 npm run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000).
+Open [http://localhost:5173](http://localhost:5173).
+
+## Scripts
+
+| Command | Description |
+|---|---|
+| `npm run dev` | Start local dev server |
+| `npm run build` | Build for production (outputs to `dist/`) |
+| `npm run preview` | Preview the production build locally |
 
 ## Sections
 
@@ -58,20 +65,22 @@ Open [http://localhost:3000](http://localhost:3000).
 
 ## Updating the CV
 
-Replace the files at `app/public/assets/cv-en.pdf` and `app/public/assets/cv-es.pdf` — the download buttons will pick up the new files automatically.
+Replace `public/assets/cv-en.pdf` and `public/assets/cv-es.pdf` — the download buttons will pick up the new files automatically.
 
 ## Updating the Profile Photo
 
-Replace `app/public/assets/profile-image.jpeg` with any JPEG image and keep the same filename.
+Replace `public/assets/profile-image.jpeg` with any JPEG image and keep the same filename.
 
 ## GitHub Pinned Repositories
 
-Repos are fetched at build time from `https://pinned.berrysauce.dev/get/Strako` with a 5-minute revalidation cache. Update which repos are pinned directly on your [GitHub profile](https://github.com/Strako).
+Repos are fetched client-side from `https://pinned.berrysauce.dev/get/Strako` on page load. Update which repos appear by pinning them on your [GitHub profile](https://github.com/Strako).
 
-## Build
+## Deployment
 
-```bash
-cd app
-npm run build
-npm run start
+The project is deployed on Netlify. The build config is in `netlify.toml`:
+
+```toml
+[build]
+  command = "npm run build"
+  publish = "dist"
 ```

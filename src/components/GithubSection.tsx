@@ -1,3 +1,4 @@
+import { useState, useEffect } from 'react';
 import styles from '@/styles/GithubSection.module.scss';
 
 interface PinnedRepo {
@@ -9,20 +10,15 @@ interface PinnedRepo {
   forks: number;
 }
 
-async function getPinnedRepos(): Promise<PinnedRepo[]> {
-  try {
-    const res = await fetch('https://pinned.berrysauce.dev/get/Strako', {
-      next: { revalidate: 300 },
-    });
-    if (!res.ok) return [];
-    return res.json();
-  } catch {
-    return [];
-  }
-}
+export default function GithubSection() {
+  const [repos, setRepos] = useState<PinnedRepo[]>([]);
 
-export default async function GithubSection() {
-  const repos = await getPinnedRepos();
+  useEffect(() => {
+    fetch('https://pinned.berrysauce.dev/get/Strako')
+      .then((res) => (res.ok ? res.json() : []))
+      .catch(() => [])
+      .then(setRepos);
+  }, []);
 
   return (
     <section id="github" className={styles.section}>

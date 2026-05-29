@@ -1,7 +1,4 @@
-'use client';
-
 import { useState, useEffect, useRef } from 'react';
-import Image from 'next/image';
 import styles from '@/styles/Hero.module.scss';
 
 export default function Hero() {
@@ -22,13 +19,12 @@ export default function Hero() {
     <section id="about" className={styles.section}>
       <div className={styles.avatarWrap}>
         <div className={styles.avatarRing}>
-          <Image
+          <img
             src="/assets/profile-image.jpeg"
             alt="Armando Ibarra"
             width={160}
             height={160}
             className={styles.avatarImg}
-            priority
           />
         </div>
         <div className={styles.badge}>
