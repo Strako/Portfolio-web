@@ -1,0 +1,284 @@
+@use './variables' as *;
+
+.section {
+  padding: $section-gap $gutter;
+  max-width: $container-max;
+  margin: 0 auto;
+}
+
+.sectionTitle {
+  font-family: $font-inter;
+  font-size: 32px;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  color: $on-surface;
+  text-align: center;
+  margin-bottom: $section-gap;
+}
+
+// ─── Timeline ────────────────────────────────────────────────────────────────
+
+.timeline {
+  position: relative;
+
+  &::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 1px;
+    height: 100%;
+    background-color: rgba(73, 68, 84, 0.3);
+
+    @media (min-width: $md) {
+      left: 50%;
+    }
+  }
+}
+
+.timelineEntry {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: $stack-lg;
+  padding-left: 32px;
+  padding-bottom: $stack-lg;
+
+  @media (min-width: $md) {
+    flex-direction: row;
+    padding-left: 0;
+  }
+}
+
+.dot {
+  display: none;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background-color: $primary;
+  border: 4px solid $surface;
+  box-shadow: 0 0 15px rgba(208, 188, 255, 0.4);
+  top: 4px;
+
+  @media (min-width: $md) {
+    display: block;
+  }
+
+  &.muted {
+    background-color: $on-surface-variant;
+    box-shadow: none;
+  }
+}
+
+.dotMobile {
+  position: absolute;
+  left: -6px;
+  top: 4px;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: $primary;
+  border: 3px solid $surface;
+
+  @media (min-width: $md) {
+    display: none;
+  }
+
+  &.muted {
+    background-color: $on-surface-variant;
+  }
+}
+
+.left {
+  @media (min-width: $md) {
+    width: 50%;
+    padding-right: 64px;
+    text-align: right;
+  }
+}
+
+.right {
+  @media (min-width: $md) {
+    width: 50%;
+    padding-left: 64px;
+    margin-left: auto;
+  }
+}
+
+.date {
+  font-family: $font-mono;
+  font-size: 13px;
+  color: $primary;
+  margin-bottom: 8px;
+  letter-spacing: 0.02em;
+}
+
+.role {
+  font-family: $font-inter;
+  font-size: 22px;
+  font-weight: 600;
+  color: $on-surface;
+  margin-bottom: 4px;
+}
+
+.company {
+  font-family: $font-inter;
+  font-size: 14px;
+  font-weight: 500;
+  color: $on-surface-variant;
+  margin-bottom: $stack-md;
+  letter-spacing: 0.02em;
+}
+
+.desc {
+  font-family: $font-inter;
+  font-size: 15px;
+  color: $on-surface-variant;
+  line-height: 1.6;
+}
+
+.bullets {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.bullet {
+  font-family: $font-inter;
+  font-size: 15px;
+  color: $on-surface-variant;
+  line-height: 1.6;
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  text-align: left;
+
+  @media (min-width: $md) {
+    text-align: right;
+    flex-direction: row-reverse;
+  }
+
+  &::before {
+    content: '—';
+    color: $primary;
+    flex-shrink: 0;
+    font-size: 12px;
+    margin-top: 3px;
+  }
+}
+
+// ─── Education ───────────────────────────────────────────────────────────────
+
+.eduSection {
+  margin-top: $section-gap;
+}
+
+.subTitle {
+  font-family: $font-inter;
+  font-size: 24px;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  color: $on-surface;
+  text-align: center;
+  margin-bottom: $stack-lg;
+}
+
+.eduCard {
+  border: 1px solid #262626;
+  background-color: $surface;
+  border-radius: 8px;
+  padding: $stack-lg;
+  max-width: 640px;
+  margin: 0 auto;
+  transition: border-color 0.2s ease;
+
+  &:hover {
+    border-color: $primary;
+  }
+}
+
+.eduHeader {
+  display: flex;
+  align-items: flex-start;
+  gap: $stack-md;
+  margin-bottom: $stack-sm;
+}
+
+.eduIcon {
+  color: $primary;
+  flex-shrink: 0;
+}
+
+.eduSchool {
+  font-family: $font-inter;
+  font-size: 18px;
+  font-weight: 600;
+  color: $on-surface;
+}
+
+.eduDegree {
+  font-family: $font-inter;
+  font-size: 15px;
+  color: $on-surface-variant;
+  margin-top: 4px;
+}
+
+.eduDate {
+  font-family: $font-mono;
+  font-size: 13px;
+  color: $primary;
+  margin-top: $stack-sm;
+}
+
+// ─── Certifications ──────────────────────────────────────────────────────────
+
+.certSection {
+  margin-top: $section-gap;
+}
+
+.certGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: $stack-md;
+
+  @media (min-width: $md) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (min-width: $lg) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.certCard {
+  border: 1px solid #262626;
+  background-color: $surface;
+  border-radius: 8px;
+  padding: $stack-md;
+  transition: border-color 0.2s ease;
+
+  &:hover {
+    border-color: rgba(208, 188, 255, 0.4);
+  }
+}
+
+.certName {
+  font-family: $font-inter;
+  font-size: 14px;
+  font-weight: 600;
+  color: $on-surface;
+  margin-bottom: 4px;
+}
+
+.certMeta {
+  font-family: $font-mono;
+  font-size: 12px;
+  color: $on-surface-variant;
+  display: flex;
+  justify-content: space-between;
+}

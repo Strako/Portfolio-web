@@ -1,0 +1,229 @@
+@use './variables' as *;
+
+.section {
+  padding: $section-gap $gutter;
+}
+
+.inner {
+  max-width: $container-max;
+  margin: 0 auto;
+  border: 1px solid #262626;
+  background-color: $surface-container;
+  border-radius: 16px;
+  padding: $stack-lg;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+
+  @media (min-width: $md) {
+    padding: 64px;
+  }
+}
+
+.bgGrid {
+  position: absolute;
+  inset: 0;
+  opacity: 0.03;
+  pointer-events: none;
+  background-image: radial-gradient(#d0bcff 1px, transparent 0);
+  background-size: 40px 40px;
+}
+
+.icon {
+  color: $primary;
+  font-size: 64px;
+  margin-bottom: $stack-md;
+  position: relative;
+}
+
+.title {
+  font-family: $font-inter;
+  font-size: 48px;
+  font-weight: 700;
+  letter-spacing: -0.04em;
+  color: $on-surface;
+  margin-bottom: $stack-md;
+
+  @media (max-width: $md) {
+    font-size: 32px;
+  }
+}
+
+.subtitle {
+  font-family: $font-inter;
+  font-size: 18px;
+  color: $on-surface-variant;
+  max-width: 640px;
+  margin: 0 auto $stack-lg;
+  line-height: 1.6;
+}
+
+.actions {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: $stack-md;
+  margin-bottom: $section-gap;
+
+  @media (min-width: $md) {
+    flex-direction: row;
+  }
+}
+
+.btnPrimary {
+  background-color: $on-surface;
+  color: $surface;
+  padding: 16px 40px;
+  border-radius: 6px;
+  font-family: $font-inter;
+  font-size: 14px;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+
+  &:hover {
+    transform: scale(1.02);
+    opacity: 0.95;
+  }
+
+  .material-symbols-outlined {
+    font-size: 20px;
+  }
+}
+
+.btnSecondary {
+  border: 1px solid rgba(73, 68, 84, 0.4);
+  color: $on-surface;
+  padding: 16px 40px;
+  border-radius: 6px;
+  font-family: $font-inter;
+  font-size: 14px;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: background-color 0.2s ease;
+
+  &:hover {
+    background-color: $surface-container-high;
+  }
+
+  .material-symbols-outlined {
+    font-size: 20px;
+  }
+}
+
+.reposGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: $stack-md;
+  text-align: left;
+
+  @media (min-width: $md) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (min-width: $lg) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.repoCard {
+  border: 1px solid #262626;
+  background-color: $surface;
+  padding: $stack-md;
+  border-radius: 10px;
+  transition: border-color 0.2s ease, transform 0.2s ease;
+
+  &:hover {
+    border-color: $primary;
+    transform: translateY(-2px);
+  }
+}
+
+.repoHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+
+.repoName {
+  font-family: $font-mono;
+  font-size: 14px;
+  color: $primary;
+}
+
+.repoMeta {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  color: $on-surface-variant;
+
+  .material-symbols-outlined {
+    font-size: 16px;
+  }
+
+  span:last-child {
+    font-family: $font-mono;
+    font-size: 12px;
+  }
+}
+
+.repoDesc {
+  font-family: $font-inter;
+  font-size: 13px;
+  color: $on-surface-variant;
+  line-height: 1.5;
+  margin-bottom: $stack-md;
+}
+
+.repoFooter {
+  display: flex;
+  align-items: center;
+  gap: $stack-sm;
+  flex-wrap: wrap;
+}
+
+.langDot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: $primary;
+  flex-shrink: 0;
+}
+
+.lang {
+  font-family: $font-mono;
+  font-size: 12px;
+  color: $on-surface-variant;
+}
+
+.forks {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  color: $on-surface-variant;
+  margin-left: auto;
+
+  .material-symbols-outlined {
+    font-size: 14px;
+  }
+
+  span:last-child {
+    font-family: $font-mono;
+    font-size: 12px;
+  }
+}
+
+.error {
+  color: $on-surface-variant;
+  font-family: $font-mono;
+  font-size: 14px;
+  padding: $stack-lg;
+}

@@ -1,0 +1,125 @@
+@use './variables' as *;
+
+.section {
+  padding: $section-gap $gutter;
+  background-color: $surface-container-lowest;
+  border-top: 1px solid rgba(73, 68, 84, 0.1);
+  border-bottom: 1px solid rgba(73, 68, 84, 0.1);
+}
+
+.inner {
+  max-width: $container-max;
+  margin: 0 auto;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: $section-gap;
+}
+
+.icon {
+  color: $primary;
+  font-size: 56px;
+  margin-bottom: $stack-md;
+}
+
+.title {
+  font-family: $font-inter;
+  font-size: 32px;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  color: $on-surface;
+  margin-bottom: $stack-sm;
+}
+
+.subtitle {
+  font-family: $font-inter;
+  font-size: 18px;
+  color: $on-surface-variant;
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: $stack-md;
+
+  @media (min-width: $md) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (min-width: $lg) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+// Last card centered when 5 items in 3-col grid
+.grid > *:last-child:nth-child(3n - 1) {
+  @media (min-width: $lg) {
+    grid-column: 2;
+  }
+}
+
+.card {
+  border: 1px solid #262626;
+  background-color: $surface;
+  border-radius: 10px;
+  padding: $stack-lg;
+  display: flex;
+  flex-direction: column;
+  gap: $stack-md;
+  transition: border-color 0.2s ease, transform 0.2s ease;
+
+  &:hover {
+    border-color: $primary;
+    transform: translateY(-4px);
+  }
+}
+
+.cardHeader {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: $stack-sm;
+}
+
+.cardName {
+  font-family: $font-mono;
+  font-size: 14px;
+  color: $primary;
+  font-weight: 400;
+  line-height: 1.4;
+  word-break: break-word;
+}
+
+.cardIcon {
+  color: $on-surface-variant;
+  font-size: 20px;
+  flex-shrink: 0;
+}
+
+.cardDesc {
+  font-family: $font-inter;
+  font-size: 14px;
+  color: $on-surface-variant;
+  line-height: 1.6;
+  flex: 1;
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.tag {
+  padding: 4px 10px;
+  border-radius: 4px;
+  background-color: $surface-container-high;
+  border: 1px solid rgba(73, 68, 84, 0.2);
+  font-family: $font-mono;
+  font-size: 11px;
+  color: $on-surface-variant;
+}
