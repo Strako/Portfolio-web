@@ -1,9 +1,16 @@
 import { useState, useEffect, useRef } from "react";
+import * as amplitude from "@amplitude/unified";
 import styles from "@/styles/Hero.module.scss";
 
 export default function Hero() {
   const [cvOpen, setCvOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (cvOpen) {
+      amplitude.track("cv_dropdown_opened");
+    }
+  }, [cvOpen]);
 
   useEffect(() => {
     const handleOutside = (e: MouseEvent) => {
@@ -60,7 +67,7 @@ export default function Hero() {
                 href="/assets/cv-en.pdf"
                 download="cv-en.pdf"
                 className={styles.dropdownItem}
-                onClick={() => setCvOpen(false)}
+                onClick={() => { setCvOpen(false); amplitude.track("cv_download_english"); }}
               >
                 <span className="material-symbols-outlined">description</span>
                 English
@@ -69,7 +76,7 @@ export default function Hero() {
                 href="/assets/cv-es.pdf"
                 download="cv-es.pdf"
                 className={styles.dropdownItem}
-                onClick={() => setCvOpen(false)}
+                onClick={() => { setCvOpen(false); amplitude.track("cv_download_spanish"); }}
               >
                 <span className="material-symbols-outlined">description</span>
                 Spanish

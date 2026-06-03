@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import * as amplitude from "@amplitude/unified";
 import styles from '@/styles/GithubSection.module.scss';
 
 interface PinnedRepo {
@@ -38,6 +39,7 @@ export default function GithubSection() {
             target="_blank"
             rel="noopener noreferrer"
             className={styles.btnPrimary}
+            onClick={() => amplitude.track("github_view_profile_clicked")}
           >
             <span className="material-symbols-outlined">terminal</span>
             View GitHub Profile
@@ -47,6 +49,7 @@ export default function GithubSection() {
             target="_blank"
             rel="noopener noreferrer"
             className={styles.btnSecondary}
+            onClick={() => amplitude.track("github_browse_repos_clicked")}
           >
             <span className="material-symbols-outlined">visibility</span>
             Browse Repositories
@@ -62,6 +65,7 @@ export default function GithubSection() {
                 target="_blank"
                 rel="noopener noreferrer"
                 className={styles.repoCard}
+                onClick={() => amplitude.track("github_repo_card_clicked", { repo: repo.name })}
               >
                 <div className={styles.repoHeader}>
                   <span className={styles.repoName}>{repo.name}</span>

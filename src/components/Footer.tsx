@@ -1,3 +1,4 @@
+import * as amplitude from "@amplitude/unified";
 import styles from '@/styles/Footer.module.scss';
 
 export default function Footer() {
@@ -12,6 +13,7 @@ export default function Footer() {
             target="_blank"
             rel="noopener noreferrer"
             className={styles.link}
+            onClick={() => amplitude.track("footer_github_clicked")}
           >
             GitHub
           </a>
@@ -20,6 +22,7 @@ export default function Footer() {
             target="_blank"
             rel="noopener noreferrer"
             className={styles.link}
+            onClick={() => amplitude.track("footer_linkedin_clicked")}
           >
             LinkedIn
           </a>
@@ -28,6 +31,7 @@ export default function Footer() {
             target="_blank"
             rel="noopener noreferrer"
             className={styles.link}
+            onClick={() => amplitude.track("footer_source_clicked")}
           >
             Source
           </a>
